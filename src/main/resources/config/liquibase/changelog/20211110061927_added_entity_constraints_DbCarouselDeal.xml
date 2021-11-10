@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity DbCarouselDeal.
+    -->
+    <changeSet id="20211110061927-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="merchant_details_id"
+                                 baseTableName="db_carousel_deal"
+                                 constraintName="fk_db_carousel_deal__merchant_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="merchant_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="deal_category_id"
+                                 baseTableName="db_carousel_deal"
+                                 constraintName="fk_db_carousel_deal__deal_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="deal_category"/>
+    </changeSet>
+</databaseChangeLog>

@@ -48,6 +48,15 @@ public class CacheConfiguration {
             createCache(cm, com.cloudfen.flashadeal.domain.User.class.getName());
             createCache(cm, com.cloudfen.flashadeal.domain.Authority.class.getName());
             createCache(cm, com.cloudfen.flashadeal.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.cloudfen.flashadeal.domain.LoginProfile.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.BioProfile.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.DbCarouselDeal.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.SideDisplayDeal.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.FlashDeal.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.MerchantDetails.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.DealCategory.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.DealUserRelation.class.getName());
+            createCache(cm, com.cloudfen.flashadeal.domain.EmailSubscription.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

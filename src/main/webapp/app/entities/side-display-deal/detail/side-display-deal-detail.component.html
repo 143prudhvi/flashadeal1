@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sideDisplayDeal">
+      <h2 data-cy="sideDisplayDealDetailsHeading"><span>Side Display Deal</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.id }}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.type }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.title }}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.description }}</span>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.imageUrl }}</span>
+        </dd>
+        <dt><span>Deal Url</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.dealUrl }}</span>
+        </dd>
+        <dt><span>Posted By</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.postedBy }}</span>
+        </dd>
+        <dt><span>Posted Date</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.postedDate }}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.startDate }}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.endDate }}</span>
+        </dd>
+        <dt><span>Original Price</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.originalPrice }}</span>
+        </dd>
+        <dt><span>Current Price</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.currentPrice }}</span>
+        </dd>
+        <dt><span>Discount</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.discount }}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.active }}</span>
+        </dd>
+        <dt><span>Position</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.position }}</span>
+        </dd>
+        <dt><span>Approved</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.approved }}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.country }}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.city }}</span>
+        </dd>
+        <dt><span>Pin Code</span></dt>
+        <dd>
+          <span>{{ sideDisplayDeal.pinCode }}</span>
+        </dd>
+        <dt><span>Merchant Details</span></dt>
+        <dd>
+          <div *ngIf="sideDisplayDeal.merchantDetails">
+            <a [routerLink]="['/merchant-details', sideDisplayDeal.merchantDetails?.id, 'view']">{{
+              sideDisplayDeal.merchantDetails?.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span>Deal Category</span></dt>
+        <dd>
+          <div *ngIf="sideDisplayDeal.dealCategory">
+            <a [routerLink]="['/deal-category', sideDisplayDeal.dealCategory?.id, 'view']">{{ sideDisplayDeal.dealCategory?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/side-display-deal', sideDisplayDeal.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,193 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-db-carousel-deal-heading" data-cy="DbCarouselDealCreateUpdateHeading">Create or edit a Db Carousel Deal</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let dealType of dealTypeValues" [value]="dealType">dealType</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_description">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_imageUrl">Image Url</label>
+          <textarea class="form-control" name="imageUrl" id="field_imageUrl" data-cy="imageUrl" formControlName="imageUrl"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dealUrl">Deal Url</label>
+          <textarea class="form-control" name="dealUrl" id="field_dealUrl" data-cy="dealUrl" formControlName="dealUrl"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_postedBy">Posted By</label>
+          <input type="text" class="form-control" name="postedBy" id="field_postedBy" data-cy="postedBy" formControlName="postedBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_postedDate">Posted Date</label>
+          <input
+            type="text"
+            class="form-control"
+            name="postedDate"
+            id="field_postedDate"
+            data-cy="postedDate"
+            formControlName="postedDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_startDate">Start Date</label>
+          <input type="text" class="form-control" name="startDate" id="field_startDate" data-cy="startDate" formControlName="startDate" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_endDate">End Date</label>
+          <input type="text" class="form-control" name="endDate" id="field_endDate" data-cy="endDate" formControlName="endDate" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_originalPrice">Original Price</label>
+          <input
+            type="text"
+            class="form-control"
+            name="originalPrice"
+            id="field_originalPrice"
+            data-cy="originalPrice"
+            formControlName="originalPrice"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_currentPrice">Current Price</label>
+          <input
+            type="text"
+            class="form-control"
+            name="currentPrice"
+            id="field_currentPrice"
+            data-cy="currentPrice"
+            formControlName="currentPrice"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_discount">Discount</label>
+          <input type="text" class="form-control" name="discount" id="field_discount" data-cy="discount" formControlName="discount" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_active">Active</label>
+          <input type="text" class="form-control" name="active" id="field_active" data-cy="active" formControlName="active" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_position">Position</label>
+          <select class="form-control" name="position" formControlName="position" id="field_position" data-cy="position">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let dealDisplayPostion of dealDisplayPostionValues" [value]="dealDisplayPostion">dealDisplayPostion</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_approved">Approved</label>
+          <input type="checkbox" class="form-check" name="approved" id="field_approved" data-cy="approved" formControlName="approved" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_country">Country</label>
+          <input type="text" class="form-control" name="country" id="field_country" data-cy="country" formControlName="country" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_city">City</label>
+          <input type="text" class="form-control" name="city" id="field_city" data-cy="city" formControlName="city" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pinCode">Pin Code</label>
+          <input type="text" class="form-control" name="pinCode" id="field_pinCode" data-cy="pinCode" formControlName="pinCode" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_merchantDetails">Merchant Details</label>
+          <select
+            class="form-control"
+            id="field_merchantDetails"
+            data-cy="merchantDetails"
+            name="merchantDetails"
+            formControlName="merchantDetails"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                merchantDetailsOption.id === editForm.get('merchantDetails')!.value?.id
+                  ? editForm.get('merchantDetails')!.value
+                  : merchantDetailsOption
+              "
+              *ngFor="let merchantDetailsOption of merchantDetailsSharedCollection; trackBy: trackMerchantDetailsById"
+            >
+              {{ merchantDetailsOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dealCategory">Deal Category</label>
+          <select class="form-control" id="field_dealCategory" data-cy="dealCategory" name="dealCategory" formControlName="dealCategory">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                dealCategoryOption.id === editForm.get('dealCategory')!.value?.id ? editForm.get('dealCategory')!.value : dealCategoryOption
+              "
+              *ngFor="let dealCategoryOption of dealCategoriesSharedCollection; trackBy: trackDealCategoryById"
+            >
+              {{ dealCategoryOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dbCarouselDeal">
+      <h2 data-cy="dbCarouselDealDetailsHeading"><span>Db Carousel Deal</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.id }}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.type }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.title }}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.description }}</span>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.imageUrl }}</span>
+        </dd>
+        <dt><span>Deal Url</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.dealUrl }}</span>
+        </dd>
+        <dt><span>Posted By</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.postedBy }}</span>
+        </dd>
+        <dt><span>Posted Date</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.postedDate }}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.startDate }}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.endDate }}</span>
+        </dd>
+        <dt><span>Original Price</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.originalPrice }}</span>
+        </dd>
+        <dt><span>Current Price</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.currentPrice }}</span>
+        </dd>
+        <dt><span>Discount</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.discount }}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.active }}</span>
+        </dd>
+        <dt><span>Position</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.position }}</span>
+        </dd>
+        <dt><span>Approved</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.approved }}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.country }}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.city }}</span>
+        </dd>
+        <dt><span>Pin Code</span></dt>
+        <dd>
+          <span>{{ dbCarouselDeal.pinCode }}</span>
+        </dd>
+        <dt><span>Merchant Details</span></dt>
+        <dd>
+          <div *ngIf="dbCarouselDeal.merchantDetails">
+            <a [routerLink]="['/merchant-details', dbCarouselDeal.merchantDetails?.id, 'view']">{{
+              dbCarouselDeal.merchantDetails?.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span>Deal Category</span></dt>
+        <dd>
+          <div *ngIf="dbCarouselDeal.dealCategory">
+            <a [routerLink]="['/deal-category', dbCarouselDeal.dealCategory?.id, 'view']">{{ dbCarouselDeal.dealCategory?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/db-carousel-deal', dbCarouselDeal.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

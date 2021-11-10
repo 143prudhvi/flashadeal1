@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="flashDeal">
+      <h2 data-cy="flashDealDetailsHeading"><span>Flash Deal</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ flashDeal.id }}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+          <span>{{ flashDeal.type }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ flashDeal.title }}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+          <span>{{ flashDeal.description }}</span>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+          <span>{{ flashDeal.imageUrl }}</span>
+        </dd>
+        <dt><span>Deal Url</span></dt>
+        <dd>
+          <span>{{ flashDeal.dealUrl }}</span>
+        </dd>
+        <dt><span>Posted By</span></dt>
+        <dd>
+          <span>{{ flashDeal.postedBy }}</span>
+        </dd>
+        <dt><span>Posted Date</span></dt>
+        <dd>
+          <span>{{ flashDeal.postedDate }}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+          <span>{{ flashDeal.startDate }}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+          <span>{{ flashDeal.endDate }}</span>
+        </dd>
+        <dt><span>Original Price</span></dt>
+        <dd>
+          <span>{{ flashDeal.originalPrice }}</span>
+        </dd>
+        <dt><span>Current Price</span></dt>
+        <dd>
+          <span>{{ flashDeal.currentPrice }}</span>
+        </dd>
+        <dt><span>Discount</span></dt>
+        <dd>
+          <span>{{ flashDeal.discount }}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+          <span>{{ flashDeal.active }}</span>
+        </dd>
+        <dt><span>Position</span></dt>
+        <dd>
+          <span>{{ flashDeal.position }}</span>
+        </dd>
+        <dt><span>Approved</span></dt>
+        <dd>
+          <span>{{ flashDeal.approved }}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+          <span>{{ flashDeal.country }}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+          <span>{{ flashDeal.city }}</span>
+        </dd>
+        <dt><span>Pin Code</span></dt>
+        <dd>
+          <span>{{ flashDeal.pinCode }}</span>
+        </dd>
+        <dt><span>Merchant Details</span></dt>
+        <dd>
+          <div *ngIf="flashDeal.merchantDetails">
+            <a [routerLink]="['/merchant-details', flashDeal.merchantDetails?.id, 'view']">{{ flashDeal.merchantDetails?.name }}</a>
+          </div>
+        </dd>
+        <dt><span>Deal Category</span></dt>
+        <dd>
+          <div *ngIf="flashDeal.dealCategory">
+            <a [routerLink]="['/deal-category', flashDeal.dealCategory?.id, 'view']">{{ flashDeal.dealCategory?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/flash-deal', flashDeal.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

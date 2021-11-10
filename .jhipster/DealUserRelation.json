@@ -1,0 +1,24 @@
+{
+  "name": "DealUserRelation",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dealId",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "deal_user_relation",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211110061932"
+}

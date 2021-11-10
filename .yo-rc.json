@@ -44,7 +44,19 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": [
+      "LoginProfile",
+      "BioProfile",
+      "DbCarouselDeal",
+      "SideDisplayDeal",
+      "FlashDeal",
+      "MerchantDetails",
+      "DealCategory",
+      "DealUserRelation",
+      "EmailSubscription"
+    ],
+    "lastLiquibaseTimestamp": 1636525173000
   },
   "git-provider": "GitHub",
   "git-company": "143prudhvi",

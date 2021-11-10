@@ -1,0 +1,177 @@
+enum MemberType {
+  MERCHANT
+  BUYER
+  ADMIN
+}
+
+enum MerchantLocationType {
+  INSTORE
+  ONLINE
+}
+
+enum DealType {
+      USA_FREEDEAL
+      USA_PAIDDEAL
+      USA_BLACKFRIDAY
+      USA_CHRISTMAS
+      INDIA_FREEDEAL
+      INDIA_PAIDDEAL
+      INDIA_DASARA
+      INDIA_DIWALI
+      INDIA_BONALU
+      INDIA_AKSHYA
+      INDIA_SANKRANTHI
+}
+
+enum DealDisplayPostion {
+      DASHBOARD_DEAL_TOP_LIST
+      DASHBOARD_DEAL_MIDDLE_LIST
+      DASHBOARD_DEAL_BOTTOM_LIST
+      DASHBOARD_DEAL_SIDE_LIST
+}
+
+enum MerchantName{
+      WALMART
+      TARGET
+      COSTCO
+}
+
+
+entity LoginProfile{
+      memberType MemberType
+      phoneNumber String
+      emailId String
+      password String
+      activationCode String
+}
+
+entity BioProfile {
+      firstName String
+      lastName String
+      dob String
+      gender String
+      imageUrl String
+}
+
+entity DbCarouselDeal{
+      type DealType
+      title String
+      description TextBlob
+      imageUrl TextBlob
+      dealUrl TextBlob
+      postedBy String
+      postedDate String
+      StartDate String
+      EndDate String
+      originalPrice String
+      currentPrice String
+      discount String
+      active String
+      position DealDisplayPostion
+      approved Boolean
+      country String
+      city String
+      pinCode String
+
+}
+
+entity SideDisplayDeal{
+      type DealType
+      title String
+      description TextBlob
+      imageUrl TextBlob
+      dealUrl TextBlob
+      postedBy String
+      postedDate String
+      StartDate String
+      EndDate String
+      originalPrice String
+      currentPrice String
+      discount String
+      active String
+      position DealDisplayPostion
+      approved Boolean
+      country String
+      city String
+      pinCode String
+
+}
+
+entity FlashDeal {
+      type DealType
+      title String
+      description TextBlob
+      imageUrl TextBlob
+      dealUrl TextBlob
+      postedBy String
+      postedDate String
+      StartDate String
+      EndDate String
+      originalPrice String
+      currentPrice String
+      discount String
+      active String
+      position DealDisplayPostion
+      approved Boolean
+      country String
+      city String
+      pinCode String
+}
+
+entity MerchantDetails{
+      name String
+      country String
+      city String
+      storeIcon TextBlob
+      type String
+      location MerchantLocationType
+}
+
+entity DealCategory{
+      name String
+      icon TextBlob
+      description TextBlob
+}
+
+
+entity DealUserRelation{
+      userId String
+      dealId String
+}
+
+entity EmailSubscription{
+      email String
+      country String
+}
+
+relationship ManyToOne {
+    LoginProfile{user(login)} to User
+    BioProfile{user(login)} to User
+    FlashDeal{merchantDetails(name)} to MerchantDetails
+    SideDisplayDeal{merchantDetails(name)} to MerchantDetails
+    DbCarouselDeal{merchantDetails(name)} to MerchantDetails
+    FlashDeal{dealCategory(name)} to DealCategory
+    SideDisplayDeal{dealCategory(name)} to DealCategory
+    DbCarouselDeal{dealCategory(name)} to DealCategory
+}
+
+filter FlashDeal, SideDisplayDeal, DbCarouselDeal
+
+paginate LoginProfile with infinite-scroll
+paginate LoginProfile with pagination
+
+paginate FlashDeal with infinite-scroll
+paginate FlashDeal with pagination
+
+paginate SideDisplayDeal with infinite-scroll
+paginate SideDisplayDeal with pagination
+
+
+paginate DbCarouselDeal with infinite-scroll
+paginate DbCarouselDeal with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
