@@ -1,0 +1,142 @@
+<div>
+  <h2 id="page-heading" data-cy="FlashDealHeading">
+    <span>Flash Deals</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-flash-deal"
+        [routerLink]="['/flash-deal/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Flash Deal </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="flashDeals?.length === 0">
+    <span>No flashDeals found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="flashDeals && flashDeals.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="type"><span>Type</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="title"><span>Title</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="description"><span>Description</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="imageUrl"><span>Image Url</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dealUrl"><span>Deal Url</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="postedBy"><span>Posted By</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="postedDate"><span>Posted Date</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="startDate"><span>Start Date</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="endDate"><span>End Date</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="originalPrice"><span>Original Price</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="currentPrice"><span>Current Price</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="discount"><span>Discount</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="active"><span>Active</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="position"><span>Position</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="approved"><span>Approved</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="country"><span>Country</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="city"><span>City</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="pinCode"><span>Pin Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="merchantDetails.name"><span>Merchant Details</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dealCategory.name"><span>Deal Category</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flashDeal of flashDeals; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/flash-deal', flashDeal.id, 'view']">{{ flashDeal.id }}</a>
+          </td>
+          <td>{{ flashDeal.type }}</td>
+          <td>{{ flashDeal.title }}</td>
+          <td>{{ flashDeal.description }}</td>
+          <td>{{ flashDeal.imageUrl }}</td>
+          <td>{{ flashDeal.dealUrl }}</td>
+          <td>{{ flashDeal.postedBy }}</td>
+          <td>{{ flashDeal.postedDate }}</td>
+          <td>{{ flashDeal.startDate }}</td>
+          <td>{{ flashDeal.endDate }}</td>
+          <td>{{ flashDeal.originalPrice }}</td>
+          <td>{{ flashDeal.currentPrice }}</td>
+          <td>{{ flashDeal.discount }}</td>
+          <td>{{ flashDeal.active }}</td>
+          <td>{{ flashDeal.position }}</td>
+          <td>{{ flashDeal.approved }}</td>
+          <td>{{ flashDeal.country }}</td>
+          <td>{{ flashDeal.city }}</td>
+          <td>{{ flashDeal.pinCode }}</td>
+          <td>
+            <div *ngIf="flashDeal.merchantDetails">
+              <a [routerLink]="['/merchant-details', flashDeal.merchantDetails?.id, 'view']">{{ flashDeal.merchantDetails?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="flashDeal.dealCategory">
+              <a [routerLink]="['/deal-category', flashDeal.dealCategory?.id, 'view']">{{ flashDeal.dealCategory?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/flash-deal', flashDeal.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/flash-deal', flashDeal.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(flashDeal)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="flashDeals && flashDeals.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
